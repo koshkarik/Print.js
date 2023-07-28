@@ -95,6 +95,8 @@ function loadIframeImages (images) {
 function loadIframeImage (image) {
   return new Promise(resolve => {
     const pollImage = () => {
+      image.data('load error', 0);
+      console.log(image);
       !image || typeof image.naturalWidth === 'undefined' || image.naturalWidth === 0 || !image.complete
         ? setTimeout(pollImage, 500)
         : resolve()
